@@ -1,8 +1,8 @@
 using Nancy;
-using AnagramNS.Objects;
+using AllergyNS.Objects;
 using System.Collections.Generic;
 
-namespace AnagramModule
+namespace ChangeModule
 {
   public class HomeModule : NancyModule
   {
@@ -10,15 +10,14 @@ namespace AnagramModule
     {
       Get["/"] = _ =>
       {
-       List<string> inputString = Word.GetWordList();
-        return View["index.cshtml", inputString];
+        List<string> model = new List<string>() {};
+        return View["index.cshtml", model];
       };
 
-      Post["/updatePage"] = _ =>
+      Post["/"] = _ =>
       {
-        string input = Request.Form["inputWord"];
-        List<string> output = Word.CompareWord(input);
-        return View ["matchedWords.cshtml", output];
+      List<string> inputList = Allergy.findAllergies(Request.Form["inputAllergyNum"]);
+        return View["index.cshtml", inputList];
       };
 
     }

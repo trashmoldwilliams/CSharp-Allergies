@@ -1,13 +1,53 @@
-<h1>Test to see if your word is an anagram of any words on our list</h1>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+<h1>Enter a number</h1>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-5">
 <ul>
-@foreach(var word in Model)
-{
-  <li>@word</li>
-}
+<li>Eggs</li>
+<li>Peanuts</li>
+<li>Shellfish</li>
+<li>Strawberries</li>
+<li>Tomatoes</li>
+<li>Chocolate</li>
+<li>Pollen</li>
+<li>Cats</li>
 </ul>
 
-<form action="/updatePage" method="post">
-<input name = "inputWord" placeholder = "Your Word Here"></input>
-<button>Click Me</button>
+    </div>
+    <div class = "col-sm-5">
+      <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>4</li>
+      <li>8</li>
+      <li>16</li>
+      <li>32</li>
+      <li>64</li>
+      <li>128</li>
+      </ul>
+
+    </div>
+
+</div>
+</div>
+
+
+<form action = "/" method = "post">
+<input type = "text" name = "inputAllergyNum" placeholder = "How Much You Got?"></input>
+<button>Get Allergies</button>
 </form>
+
+@if (@Model.Count > 0)
+{
+<h3>You're allergic to all these things</h3>
+}
+
+<ul>
+@foreach(var allergy in Model)
+{
+<li>@allergy</li>
+}
+</ul>
